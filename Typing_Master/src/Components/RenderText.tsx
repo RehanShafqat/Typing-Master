@@ -1,30 +1,47 @@
-const RenderTextWithBackground = (text: string, inputValue: string) => {
-  // Use the longest string length to ensure proper comparison
-  const maxLength = Math.max(text.length, inputValue.length);
-  let output = [];
+import React, { memo } from "react";
 
-  // Iterate through each character index up to the maximum length
-  for (let i = 0; i < maxLength; i++) {
-    const textChar = text[i] || ""; // Handle cases where text is shorter
-    const inputChar = inputValue[i] || ""; // Handle cases where inputValue is shorter
-
+const CharWithBackground = memo(
+  ({ textChar, inputChar }: { textChar: string; inputChar: string }) => {
     const isCorrect = inputChar === textChar;
     const isWrong = inputChar && inputChar !== textChar;
 
-    // Determine background color
-    const bgColor = isCorrect
-      ? "bg-green-300"
-      : isWrong
-      ? "bg-red-500"
-      : "bg-gray-300";
-    output.push(
-      <span key={i} className={`inline-block ${bgColor} text-center`}>
-        {textChar === " " ? "\u00A0" : textChar}{" "}
-        {/* if it is space , handled correctly */}
+    const bgColor = isCorrect ? "bg-green-300" : isWrong ? "bg-red-500" : "";
+
+    return (
+      <span className={`inline-block ${bgColor} text-2xl`}>
+        {textChar === " " ? "\u00A0" : textChar}
       </span>
     );
   }
+);
 
-  return <>{output}</>;
-};
+const WordWithBackground = memo(
+  ({ word, inputWord }: { word: string; inputWord: string }) => (
+    <span className="inline-block whitespace-nowrap">
+      {Array.from(word).map((textChar, charIndex) => (
+        <CharWithBackground
+          key={charIndex}
+          textChar={textChar}
+          inputChar={inputWord[charIndex] || ""}
+        />
+      ))}
+    </span>
+  )
+);
+const RenderTextWithBackground = memo(
+  ({ text, inputValue }: { text: string; inputValue: string }) => {
+    const textWords = text.split(/(\s+)/);
+    const inputWords = inputValue.split(/(\s+)/);
+
+    return textWords.map((word: string, wordIndex: number) => (
+      <React.Fragment key={wordIndex}>
+        <WordWithBackground
+          word={word}
+          inputWord={inputWords[wordIndex] || ""}
+        />
+      </React.Fragment>
+    ));
+  }
+);
+
 export default RenderTextWithBackground;
