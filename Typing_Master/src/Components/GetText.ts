@@ -4,7 +4,7 @@ export type Api_Data = {
 
 export const getData = async () => {
   //   const url = "https://api.api-ninjas.com/v1/loremipsum?paragraphs=2";
-  const url = "";
+  // const url = "";
   try {
     // const response = await fetch(url, {
     //   method: "GET",

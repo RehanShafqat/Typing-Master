@@ -1,4 +1,3 @@
-import React from "react";
 import heroImage from "../Assets/typing.jpg";
 import { Link } from "react-router-dom";
 import OurPlan from "../Components/OurPlan";
