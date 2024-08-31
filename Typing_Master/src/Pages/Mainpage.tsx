@@ -108,7 +108,7 @@ const MainPage = ({ text }: { text: string }) => {
             ref={inputRef}
             value={inputValue}
             onChange={handleChange}
-            className="px-3 py-2 border-none text-white border-gray-300 rounded-md  placeholder-transparent outline-none w-full"
+            className=" outline-none text-white rounded-lg overflow-auto absolute   top-[10px] left-[30px] p-2 text-gray-500 transition-all duration-300 w-full "
             style={{ letterSpacing: 0, wordSpacing: 3 }}
           />
           <div
