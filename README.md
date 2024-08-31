@@ -33,7 +33,7 @@ Live at: [TypingMaster](https://typing-master-tau-umber.vercel.app/)
 3. **Start the Development Server**
 
     ```bash
-    npm start
+    npm run dev
     ```
 
     The application will be available at `http://localhost:5173` by default.
