@@ -9,7 +9,7 @@ export const getData = async () => {
     // const response = await fetch(url, {
     //   method: "GET",
     //   headers: {
-    //     "X-Api-Key": "6l/+E5BkIra14V7yc+QaiA==5ZoToiG1DHi4ssUt",
+    //     "X-Api-Key": "",
     //   },
     // });
 
