@@ -7,18 +7,36 @@ import Home from "./Pages/Home";
 
 const App = () => {
   const [data, setData] = useState<Api_Data | undefined>(undefined);
-
+  
+  //getData+Disable Backspace
   useEffect(() => {
     const fetchData = async () => {
       const result = await getData();
       setData(result);
     };
-
     fetchData();
+
+
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Backspace") {
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+
+
+
+
+   
   }, []);
 
   return (
-    <div>
+    <div >
       <BrowserRouter>
         <Header />
         <Routes>

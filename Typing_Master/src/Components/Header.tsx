@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <>
-      <header className="text-gray-600 body-font border-b-2 shadow-lg ">
+      <header className="text-gray-600 body-font shadow-lg sticky top-0 z-10 w-[100%] bg-white ">
         <div className="container mx-auto md:w-[95%]  flex flex-wrap py-2 flex-col md:flex-row    items-center">
           <Link
             to={"/"}
